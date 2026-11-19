@@ -1,0 +1,41 @@
+[project]
+name = "ask-postgres"
+version = "0.1.0"
+description = "Ask your PostgreSQL database questions in plain English, from any AI agent or LLM."
+readme = "README.md"
+authors = [
+    { name = "YashwantSaste", email = "2021bec122@sggs.ac.in" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=2.10.0",
+    "fastapi>=0.165.0",
+    "google-genai>=3.6.1",
+    "mcp[cli]>=2.3.0",
+    "openai>=3.55.1",
+    "psycopg-pool>=3.3.3",
+    "psycopg[binary]>=3.3.9",
+    "pydantic>=2.14.3",
+    "python-dotenv>=1.2.4",
+    "sqlglot>=30.33.0",
+    "uvicorn>=0.54.0",
+]
+
+[project.scripts]
+ask-postgres = "ask_postgres.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.13.9,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "anyio>=4.16.0",
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.5.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
